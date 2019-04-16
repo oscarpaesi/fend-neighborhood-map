@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './components/App/App';
 import * as serviceWorker from './serviceWorker';
+
+// - Use the TripAdvisor API
+// https://developer-tripadvisor.com/content-api/
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
