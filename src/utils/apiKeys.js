@@ -1,1 +1,3 @@
 export const GOOGLE_MAPS_KEY = "AIzaSyBXQcVkKfK_5e3ruKK6eufMpYACSCuYx7o";
+export const FB_APP_ID = "318542388823429";
+export const FB_ACCESS_TOKEN = "318542388823429|qfJlfM8Kqqekmt6Me6nND8JdXRU";
