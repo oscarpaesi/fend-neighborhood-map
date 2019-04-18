@@ -1,5 +1,6 @@
 import './CustomMarker.css';
 import React, { Component } from 'react';
+/* global google */
 import { Marker, InfoWindow } from 'react-google-maps';
 
 class CustomMarker extends Component {
@@ -17,12 +18,21 @@ class CustomMarker extends Component {
     });
   }
   render() {
-    const { place } = this.props;
+    const { showInfo } = this.state;
+    const { place, select, highlight } = this.props;
     return (
-      <Marker position={ place.position } onClick={ this.toggleInfoWindow }>
-        {this.state.showInfo && (
+      <Marker
+        position={ place.position }
+        onClick={ this.toggleInfoWindow }
+        animation={ highlight
+          ? google.maps.Animation.BOUNCE
+          : null }
+      >
+        {(showInfo || select) && (
           <InfoWindow onCloseClick={ this.onInfoWindowClosed }>
-            <div>{ place.title }</div>
+            <div className="info-window">
+              <h2>{ place.title }</h2>
+            </div>
           </InfoWindow>
         )}
       </Marker>

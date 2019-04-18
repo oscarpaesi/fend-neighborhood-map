@@ -24,18 +24,25 @@ const MapWrapper = compose(
     defaultCenter={ {lat: -30.02502, lng: -51.191165} } // Center of the neighborhood
   >
     {props.places.map(place =>
-      <CustomMarker key={ place.id } place={ place }/>
+      <CustomMarker
+        key={ place.id }
+        place={ place }
+        highlight={ props.highlighted && (place.id) === props.highlighted.id }
+        select={ props.selected && (place.id === props.selected.id) }
+      />
     )}
   </GoogleMap>
 );
 
 class Map extends Component {
   render = () => {
-    const { googleMapURL, places } = this.props;
+    const { googleMapURL, places, selected, highlighted } = this.props;
     return (
       <MapWrapper
         googleMapURL={ googleMapURL }
         places={ places }
+        selected={ selected }
+        highlighted={ highlighted }
       />
     );
   }

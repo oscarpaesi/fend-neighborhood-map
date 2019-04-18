@@ -17,8 +17,15 @@ class Search extends Component {
     });
     this.props.onSearchUpdated(query);
   }
+  onItemClicked = (place) => {
+    this.props.onItemSelected(place);
+  }
+  onItemHighlighted = (place) => {
+    this.props.onItemHighlighted(place);
+  }
   render() {
     const { query, places } = this.state;
+    // const { selected } = this.props;
     return (
       <aside className="search">
         <input
@@ -29,7 +36,12 @@ class Search extends Component {
         />
         <ol className="search-results">
         {places.map((place) => (
-          <li key={ place.id }>
+          <li
+            key={ place.id }
+            onClick={ () => this.onItemClicked(place) }
+            onMouseEnter={ () => this.onItemHighlighted(place) }
+            onMouseLeave={ () => this.onItemHighlighted(place) }
+          >
             <span>{ place.title }</span>
           </li>
         ))}
