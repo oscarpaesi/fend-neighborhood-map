@@ -1,7 +1,8 @@
 import './Map.css';
 import React, { Component } from 'react';
 import { compose, withProps } from 'recompose';
-import { GoogleMap, Marker, withGoogleMap, withScriptjs } from 'react-google-maps';
+import { GoogleMap, withGoogleMap, withScriptjs } from 'react-google-maps';
+import CustomMarker from '../CustomMarker/CustomMarker';
 
 const MapWrapper = compose(
   withProps({
@@ -23,7 +24,7 @@ const MapWrapper = compose(
     defaultCenter={ {lat: -30.02502, lng: -51.191165} } // Center of the neighborhood
   >
     {props.places.map(place =>
-      <Marker key={ place.id } position={ place.position } />
+      <CustomMarker key={ place.id } place={ place }/>
     )}
   </GoogleMap>
 );
