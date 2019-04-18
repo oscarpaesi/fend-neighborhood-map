@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Righteous');
 .header {
   height: 100px;
   background-color: #0B0C10;
@@ -6,7 +7,24 @@
   justify-content: center;
   align-items: center;
 }
-.header h1 {
-  font-family: Arial, Helvetica, sans-serif;
+.header .title {
+  font-family: "Righteous", sans-serif;
+  font-size: 35px;
+  font-weight: 400;
   color: #66FCF1;
+}
+.header small {
+  font-size: 12pt;
+  vertical-align: middle;
+}
+.header hr {
+  height: 1px;
+  border: none;
+  background-color: #45A29E;
+  margin: 3px 0px -10px 0px;
+}
+.header .subtitle {
+  font-size: 14pt;
+  font-weight: 200;
+  color: #45A29E;
 }

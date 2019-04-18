@@ -4,12 +4,14 @@
   "private": true,
   "homepage": "https://oscarpaesi.github.io/fend-neighborhood-map",
   "dependencies": {
+    "escape-string-regexp": "^2.0.0",
     "gh-pages": "^2.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-google-maps": "^9.4.5",
     "react-scripts": "2.1.8",
-    "recompose": "^0.30.0"
+    "recompose": "^0.30.0",
+    "sort-by": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

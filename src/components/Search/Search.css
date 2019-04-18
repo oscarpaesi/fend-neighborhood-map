@@ -1,10 +1,16 @@
 .search {
+  display: flex;
+  flex-flow: column nowrap;
   width: 300px;
   background-color: #1F2833;
 }
 .search h2 {
   font-family: Arial, Helvetica, sans-serif;
   color: #45A29E;
+}
+.search input {
+  padding: 10px 15px;
+  margin: 10px;
 }
 .search-results {
   list-style-type: none;
@@ -18,5 +24,11 @@
   padding: 10px 15px;
   text-align: left;
   width: 100%;
+  color: #929496;
+  transition: color 0.3s, background-color 0.3s;
+}
+.search-results li:hover {
   color: #C5C6C7;
+  background-color: #465a72;
+  cursor: pointer;
 }

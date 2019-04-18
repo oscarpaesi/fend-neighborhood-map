@@ -2,11 +2,31 @@ import './Search.css';
 import React, { Component } from 'react';
 
 class Search extends Component {
+  state = {
+    query: '',
+    places: []
+  }
+  componentWillReceiveProps = (props) => {
+    this.setState({
+      places: props.places
+    });
+  }
+  updateQuery = (query) => {
+    this.setState({
+      query
+    });
+    this.props.onSearchUpdated(query);
+  }
   render() {
-    const { places } = this.props;
+    const { query, places } = this.state;
     return (
       <aside className="search">
-        <h2>Search</h2>
+        <input
+          type="text"
+          placeholder="Search places by name"
+          value={ query }
+          onChange={ (event) => this.updateQuery(event.target.value) }
+        />
         <ol className="search-results">
         {places.map((place) => (
           <li key={ place.id }>

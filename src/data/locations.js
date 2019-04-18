@@ -14,5 +14,5 @@ export const locations = [
   {id:"139904993338445",  title: 'The Weiss',                  position: {lat: -30.024224882161, lng: -51.18971770338}},
   {id:"2069438689812080", title: 'Dona Maricota',              position: {lat: -30.02739, lng: -51.19341}},
   {id:"497242480300257",  title: 'Art & Bar',                  position: {lat: -30.02305, lng: -51.19037}},
-  {id:"482792791748512",  title: '72 New Work',                position: {lat: -30.021532642242, lng: -51.19516049666}},
+  {id:"482792791748512",  title: '72 New York',                position: {lat: -30.021532642242, lng: -51.19516049666}},
 ];
