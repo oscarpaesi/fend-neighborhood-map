@@ -2,7 +2,6 @@ import './Map.css';
 import React, { Component } from 'react';
 import { compose, withProps } from 'recompose';
 import { GoogleMap, Marker, withGoogleMap, withScriptjs } from 'react-google-maps';
-import { locations } from '../../data/locations';
 
 const MapWrapper = compose(
   withProps({
@@ -23,28 +22,19 @@ const MapWrapper = compose(
     defaultZoom={ 16 }
     defaultCenter={ {lat: -30.02502, lng: -51.191165} } // Center of the neighborhood
   >
-    {
-      props.locations.map(location =>
-        <Marker key={ location.id } position={ location.position } />
-      )
-    }
+    {props.places.map(place =>
+      <Marker key={ place.id } position={ place.position } />
+    )}
   </GoogleMap>
 );
 
 class Map extends Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = { locations };
-  }
-
   render = () => {
-    const { googleMapURL } = this.props;
+    const { googleMapURL, places } = this.props;
     return (
       <MapWrapper
         googleMapURL={ googleMapURL }
-        locations={ this.state.locations }
+        places={ places }
       />
     );
   }

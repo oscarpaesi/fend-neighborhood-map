@@ -1,23 +1,47 @@
 import './App.css';
 import React, { Component } from 'react';
-import * as Facebook from '../../utils/facebookApi'
 import * as Keys from '../../utils/apiKeys'
+import Header from '../Header/Header'
+import Search from '../Search/Search'
 import Map from '../Map/Map'
+import { locations } from '../../data/locations';
+
+const byTitle = (a, b) => {
+  if (a.title < b.title) return -1;
+  if (a.title > b.title) return 1;
+  return 0;
+}
 
 class App extends Component {
 
+  state = {
+    places: []
+  }
+
   componentDidMount = () => {
-    Facebook.getPlaceInformation("700896006619622")
-      .then(response => console.log("Facebook Query Response", response))
-      .catch(error => console.log('Facebook Query Error', error));
+    this.setState({
+      places: locations.sort(byTitle)
+    });
+  }
+
+  getSearchResults = () => {
+    return this.state.places;
   }
 
   render() {
+    const results = this.getSearchResults();
     return (
       <div className="App">
-        <Map
-          googleMapURL={ `https://maps.googleapis.com/maps/api/js?key=${ Keys.GOOGLE_MAPS_KEY }&v=3` }
-        />
+        <Header/>
+        <div id="content">
+          <Search
+            places={ results }
+          />
+          <Map
+            googleMapURL={ `https://maps.googleapis.com/maps/api/js?key=${ Keys.GOOGLE_MAPS_KEY }&v=3` }
+            places={ results }
+          />
+        </div>
       </div>
     );
   }
