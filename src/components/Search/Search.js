@@ -30,6 +30,7 @@ class Search extends Component {
         <input
           type="text"
           placeholder="Search places by name"
+          aria-label="Search places by name"
           value={ query }
           onChange={ (event) => this.updateQuery(event.target.value) }
           disabled={ this.props.disabled }
