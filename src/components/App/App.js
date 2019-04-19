@@ -9,10 +9,10 @@ import Search from '../Search/Search';
 import Map from '../Map/Map';
 import { locations } from '../../data/locations';
 
-const FB_ERROR_MSG = "There are some technical issues preventing us from reaching Facebook's API, " +
-  "which this app uses to load the locations it displays. Please try again later." + "\n" +
-  "Meanwhile, you are welcome to get to know the Auxiliadora and Mont'Serrat " +
-  "neighborhoods, as well as the rest of Porto Alegre, through our map.";
+const FB_ERROR_MSG = 'There are some technical issues preventing us from reaching Facebook\'s API, ' +
+  'which this app uses to load the locations it displays. Please try again later. \n' +
+  'Meanwhile, you are welcome to get to know the Auxiliadora and Mont\'Serrat ' +
+  'neighborhoods, as well as the rest of Porto Alegre, through our map.';
 
 class App extends Component {
   state = {
