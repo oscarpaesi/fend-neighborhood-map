@@ -2,6 +2,7 @@ import './App.css';
 import React, { Component } from 'react';
 import escapeRegExp from 'escape-string-regexp';
 import by from 'sort-by';
+import * as Facebook from '../../utils/facebookApi'
 import * as Keys from '../../utils/apiKeys';
 import Header from '../Header/Header';
 import Search from '../Search/Search';
@@ -16,11 +17,23 @@ class App extends Component {
     highlightedPlace: null
   }
   componentDidMount = () => {
-    const places = locations.sort(by('title'));
-    this.setState({
-      places,
-      visiblePlaces: places
-    });
+    Promise.all(
+      locations
+      .map(location =>
+        Facebook.getPlaceInformation(location.id)
+        .then(response => response.json())
+      )
+    )
+    .then(places => places.sort(by('name')))
+    .then(places => {
+      this.setState({
+        places,
+        visiblePlaces: places
+      });
+      this.forceUpdate();
+    }).catch(error =>
+      console.log("Something went wrong while trying to load location data from Facebook's API. Please try again later.", error)
+    );
   }
   onSearchUpdated = (query) => {
     this.setState({
@@ -43,7 +56,7 @@ class App extends Component {
     let filteredPlaces;
     if (query) {
       const match = new RegExp(escapeRegExp(query.trim()), 'i');
-      filteredPlaces = places.filter((p) => match.test(p.title));
+      filteredPlaces = places.filter((p) => match.test(p.name));
     } else {
       filteredPlaces = places;
     }
@@ -51,7 +64,7 @@ class App extends Component {
   }
   render() {
     const { visiblePlaces, selectedPlace, highlightedPlace } = this.state;
-    return (
+    return visiblePlaces && (
       <div className="App">
         <Header/>
         <div id="content">

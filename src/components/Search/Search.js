@@ -25,7 +25,6 @@ class Search extends Component {
   }
   render() {
     const { query, places } = this.state;
-    // const { selected } = this.props;
     return (
       <aside className="search">
         <input
@@ -42,7 +41,7 @@ class Search extends Component {
             onMouseEnter={ () => this.onItemHighlighted(place) }
             onMouseLeave={ () => this.onItemHighlighted(place) }
           >
-            <span>{ place.title }</span>
+            <span>{ place.name }</span>
           </li>
         ))}
         </ol>

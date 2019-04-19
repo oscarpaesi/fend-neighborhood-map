@@ -7,7 +7,7 @@ import CustomMarker from '../CustomMarker/CustomMarker';
 const MapWrapper = compose(
   withProps({
     loadingElement: (
-      <span>It was not possible to load Google Maps.</span>
+      <span>Loading Google Maps...</span>
     ),
     containerElement: (
       <main className="map-container" role="application" tabIndex="0" />
