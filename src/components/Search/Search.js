@@ -32,6 +32,7 @@ class Search extends Component {
           placeholder="Search places by name"
           value={ query }
           onChange={ (event) => this.updateQuery(event.target.value) }
+          disabled={ this.props.disabled }
         />
         <ol className="search-results">
         {places.map((place) => (

@@ -9,6 +9,11 @@ import Search from '../Search/Search';
 import Map from '../Map/Map';
 import { locations } from '../../data/locations';
 
+const FB_ERROR_MSG = "There are some technical issues preventing us from reaching Facebook's API, " +
+  "which this app uses to load the locations it displays. Please try again later." + "\n" +
+  "Meanwhile, you are welcome to get to know the Auxiliadora and Mont'Serrat " +
+  "neighborhoods, as well as the rest of Porto Alegre, through our map.";
+
 class App extends Component {
   state = {
     places: [],
@@ -31,9 +36,14 @@ class App extends Component {
         visiblePlaces: places
       });
       this.forceUpdate();
-    }).catch(error =>
-      console.log("Something went wrong while trying to load location data from Facebook's API. Please try again later.", error)
-    );
+    }).catch(error => {
+      this.setState({
+        places: [],
+        visiblePlaces: []
+      });
+      this.forceUpdate();
+      alert(FB_ERROR_MSG, error)
+    });
   }
   onSearchUpdated = (query) => {
     this.setState({
@@ -63,7 +73,7 @@ class App extends Component {
     return filteredPlaces;
   }
   render() {
-    const { visiblePlaces, selectedPlace, highlightedPlace } = this.state;
+    const { places, visiblePlaces, selectedPlace, highlightedPlace } = this.state;
     return visiblePlaces && (
       <div className="App">
         <Header/>
@@ -74,6 +84,7 @@ class App extends Component {
             onSearchUpdated={ this.onSearchUpdated }
             onItemSelected={ this.onItemSelected }
             onItemHighlighted={ this.onItemHighlighted }
+            disabled={ !(places && places.length > 0) }
           />
           <Map
             googleMapURL={ `https://maps.googleapis.com/maps/api/js?key=${ Keys.GOOGLE_MAPS_KEY }&v=3` }
