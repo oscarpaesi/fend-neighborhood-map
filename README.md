@@ -7,14 +7,16 @@ It was built as a Single-Page Application (SPA), using [React][react] and [React
 > This is a project assignment for [Udacity's][udacity] [Front End Web Developer Nanodegree][fend].
 The base for the project was created with [Create React App][create-react-app].
 
-# How to use it
+## How to use it
 You can access the application from your browser, by clicking [here][github-page].
 
-If you want to run it locally, you will need [Node.js][node], which comes with [npm][npm]. You can then run the application with:
+**Note**: At this link, the application is running in **production mode**. The **Service Worker** can be tested in this mode.
+
+If you want to run it **locally**, in **development mode**, you will need [Node.js][node], which comes with [npm][npm].
+You can then run the application with:
 ```sh
 $ npm start
 ```
-
 The application will then be available at `http://localhost:3000/`
 
 [udacity]: <https://www.udacity.com/>
