@@ -13,3 +13,9 @@
   margin-top: -100px;
   padding-top: 100px;
 }
+
+@media screen and (max-device-width: 500px) {
+  #content {
+    flex-flow: column nowrap;
+  }
+}

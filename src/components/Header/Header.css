@@ -28,3 +28,15 @@
   font-weight: 200;
   color: #45A29E;
 }
+
+@media screen and (max-device-width: 500px) {
+  .header .title {
+    font-size: 25px;
+  }
+  .header small {
+    font-size: 8pt;
+  }
+  .header .subtitle {
+    font-size: 10pt;
+  }
+}

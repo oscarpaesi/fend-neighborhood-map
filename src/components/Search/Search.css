@@ -32,3 +32,11 @@
   background-color: #465a72;
   cursor: pointer;
 }
+
+@media screen and (max-device-width: 500px) {
+  .search {
+    order: 2;
+    width: 100%;
+    flex-grow: 1;
+  }
+}

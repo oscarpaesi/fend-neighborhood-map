@@ -5,3 +5,14 @@
 .map {
   height: 100%;
 }
+
+@media screen and (max-device-width: 500px) {
+  .map-container {
+    order: 1;
+    flex-grow: 0;
+  }
+  .map {
+    padding-top: 100%; /* 1:1 Aspect Ratio */
+    height: auto;
+  }
+}
