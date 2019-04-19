@@ -33,7 +33,7 @@ class Search extends Component {
     return (
       <aside className="search">
         <input
-          autofocus
+          autoFocus
           type="text"
           placeholder="Search places by name"
           aria-label="Search places by name"
