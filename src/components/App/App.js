@@ -27,6 +27,14 @@ class App extends Component {
     hasError: false
   }
   componentDidMount = () => {
+    // Set up the callback for Google Maps' authentication errors
+    let self = this;
+    window.gm_authFailure = () => {
+      self.setState({
+        hasError: true
+      });
+    }
+    // Load location data from Facebook, based on a list of IDs
     Promise.all(
       locations
       .map(location =>
@@ -47,7 +55,7 @@ class App extends Component {
         visiblePlaces: []
       });
       this.forceUpdate();
-      alert(FB_ERROR_MSG, error)
+      alert(FB_ERROR_MSG, error);
     });
   }
   onSearchUpdated = (query) => {
