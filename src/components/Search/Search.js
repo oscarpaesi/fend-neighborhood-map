@@ -23,11 +23,17 @@ class Search extends Component {
   onItemHighlighted = (place) => {
     this.props.onItemHighlighted(place);
   }
+  onKeyDown = (e, place) => {
+    if (e.keyCode === 13) {
+      this.props.onItemSelected(place);
+    }
+  }
   render() {
     const { query, places } = this.state;
     return (
       <aside className="search">
         <input
+          autofocus
           type="text"
           placeholder="Search places by name"
           aria-label="Search places by name"
@@ -42,6 +48,10 @@ class Search extends Component {
             onClick={ () => this.onItemClicked(place) }
             onMouseEnter={ () => this.onItemHighlighted(place) }
             onMouseLeave={ () => this.onItemHighlighted(place) }
+            onFocus={ () => this.onItemHighlighted(place) }
+            onBlur={ () => this.onItemHighlighted(place) }
+            onKeyDown={ (e) => this.onKeyDown(e, place) }
+            tabIndex={ 0 }
           >
             <span>{ place.name }</span>
           </li>
