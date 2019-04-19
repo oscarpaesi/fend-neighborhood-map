@@ -14,12 +14,17 @@ const FB_ERROR_MSG = 'There are some technical issues preventing us from reachin
   'Meanwhile, you are welcome to get to know the Auxiliadora and Mont\'Serrat ' +
   'neighborhoods, as well as the rest of Porto Alegre, through our map.';
 
+const MAPS_ERROR_MSG = 'There are some technical issues preventing us from reaching Google Maps. \n' +
+  'Unfortunatelly, we cannot proceed right now :( \n' +
+  'Please try again later.';
+
 class App extends Component {
   state = {
     places: [],
     visiblePlaces: null,
     selectedPlace: null,
-    highlightedPlace: null
+    highlightedPlace: null,
+    hasError: false
   }
   componentDidMount = () => {
     Promise.all(
@@ -73,7 +78,15 @@ class App extends Component {
     return filteredPlaces;
   }
   render() {
-    const { places, visiblePlaces, selectedPlace, highlightedPlace } = this.state;
+    const { places, visiblePlaces, selectedPlace, highlightedPlace, hasError } = this.state;
+    if (hasError) {
+      return (
+        <div className="google-maps-error">
+          <h1>Google Maps is unavailable...</h1>
+          <p>{ MAPS_ERROR_MSG }</p>
+        </div>
+      );
+    }
     return visiblePlaces && (
       <div className="App">
         <Header/>
@@ -95,6 +108,9 @@ class App extends Component {
         </div>
       </div>
     );
+  }
+  componentDidCatch(error, info) {
+    this.setState({ hasError: true });
   }
 }
 
